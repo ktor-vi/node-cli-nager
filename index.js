@@ -11,14 +11,23 @@ const {
 //Say hello :
 console.log(`\nGood evening ! Welcome to prettyholidays!\n`)
 
-//Affect variables
-const args = process.argv.slice(2).toString().split(',')
-const country = args[0].toLowerCase();
-let year = args[1];
-console.log(year)
-if(year == undefined){
+//Affect variables - old method
+// const args = process.argv.slice(2).toString().split(',')
+// const country = args[0].toLowerCase();
+// let year = args[1];
+
+
+//Affect variables - best method
+
+let country = process.argv[2]
+let year= process.argv[3]
+
+
+
+//User-side verification (Case-sensitivity)
+if (year == undefined) {
   year = 2019;
-}else{
+} else {
   year.toLowerCase();
 }
 if (country == "") {
@@ -27,7 +36,7 @@ if (country == "") {
   return;
 }
 
-//Verify if the provided country exists
+//User-side verification (Existing country)
 const countryArray = Object.keys(getNameList());
 
 if (countryArray.includes(country) == false) {
@@ -36,27 +45,50 @@ if (countryArray.includes(country) == false) {
   return;
 }
 
-console.log(`Okay I found your country, ${country} is indeed a nice place`)
+console.log(`Okay I found your country, ${country} is indeed a nice place.`)
 console.log("Now let's find the holidays, shall we ?")
 
 const countryCode = getCode(country);
 
-console.log(`The holidays in ${country} are : \n`)
+
+
 axios.get(`https://date.nager.at/api/v2/publicholidays/${year}/${countryCode}`)
-  .then(function (response) {
+  .then(function(response) {
     showHolidays(response.data)
+    nbrHolidays = getNbrHolidays(response.data)
+    console.log(` \nDuring the year ${year} there are ${nbrHolidays} holidays in ${country}.`)
   })
-  .catch(function (error) {
-    console.log(error);
+  .catch(function(error) {
+    showErrors(error);
   })
-  .then(function () {
+  .then(function() {
     // always executed
   });
 
 
-function showHolidays(jsonList){
-  console.log(`There are ${jsonList.length} Holidays in China`)
-  jsonList.forEach( (item, index) => {
+function showHolidays(jsonList) {
+  jsonList.forEach((item, index) => {
     console.log(`${index + 1} : ${item.date} - ${item.name} (${item.localName})`);
   });
 }
+function getNbrHolidays(jsonList){
+  return jsonList.length;
+}
+function showErrors(error) {
+  console.log(`Mistakes were made - Error ${error.response.status}: ${error.response.statusText}`)
+}
+
+
+//ERROR TEST SNIPPET
+// console.log(`The holidays in ${country} are : \n`)
+// axios.get(`https://date.nager.at/api/v2/publicholiidays/${year}/${countryCode}`)
+//   .then(function(response) {
+//     showHolidays(response.data)
+//   })
+//   .catch(function(error) {
+//     console.log(error.response);
+//     showErrors(error);
+//   })
+//   .then(function() {
+//     // always executed
+//   });
