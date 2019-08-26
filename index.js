@@ -33,7 +33,7 @@ if (year == undefined) {
 if (country == "") {
   console.log("Please enter a country...")
   console.log("I can't guess it, I'm just a program you know...");
-  return;
+  process.exit();
 }
 
 //User-side verification (Existing country)
@@ -42,7 +42,7 @@ const countryArray = Object.keys(getNameList());
 if (countryArray.includes(country) == false) {
   console.log(`Honey, "${country}" is not a country...`);
 
-  return;
+  process.exit();
 }
 
 console.log(`Okay I found your country, ${country} is indeed a nice place.`)
