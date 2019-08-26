@@ -8,13 +8,9 @@ const {
   getNameList
 } = require('country-list');
 
+
 //Say hello :
 console.log(`\nGood evening ! Welcome to prettyholidays!\n`)
-
-//Affect variables - old method
-// const args = process.argv.slice(2).toString().split(',')
-// const country = args[0].toLowerCase();
-// let year = args[1];
 
 
 //Affect variables - best method
@@ -77,18 +73,3 @@ function getNbrHolidays(jsonList){
 function showErrors(error) {
   console.log(`Mistakes were made - Error ${error.response.status}: ${error.response.statusText}`)
 }
-
-
-//ERROR TEST SNIPPET
-// console.log(`The holidays in ${country} are : \n`)
-// axios.get(`https://date.nager.at/api/v2/publicholiidays/${year}/${countryCode}`)
-//   .then(function(response) {
-//     showHolidays(response.data)
-//   })
-//   .catch(function(error) {
-//     console.log(error.response);
-//     showErrors(error);
-//   })
-//   .then(function() {
-//     // always executed
-//   });
