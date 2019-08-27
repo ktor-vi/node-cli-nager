@@ -1,6 +1,12 @@
-# Node-cli-nager
+# prettyholidays
 ### First and simple project in node.js
 
+### Install & Run: 
+```
+npm i @ktor_vi/prettyholidays
+prettyholidays-pimpednprompty
+```
+**And you're off !**
 #### Goals : 
 - Learn the basics of node.js 
 - Use axios to make requests to an API (In this case date.nager REST API) 
