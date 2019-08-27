@@ -1,5 +1,5 @@
 {
-  "name": "@ktor_vi/prettyholidays",
+  "name": "@ktor_vi/prettyholidays-pimped",
   "version": "1.0.0",
   "description": "First and simple project in node.js",
   "main": "index.js",
@@ -20,8 +20,13 @@
   "dependencies": {
     "axios": "^0.19.0",
     "chalk": "^2.4.2",
+    "chalklet": "^1.0.0",
     "country-list": "^2.2.0",
     "figlet": "^1.2.3",
-    "ora": "^3.4.0"
+    "ora": "^3.4.0",
+    "prompts": "^2.2.1"
+  },
+  "pkg": {
+    "assets": "node_modules/figlet/fonts/Doom.flf"
   }
 }
