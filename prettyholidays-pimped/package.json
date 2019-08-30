@@ -1,6 +1,6 @@
 {
   "name": "@ktor_vi/prettyholidays-pimped",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "First and simple project in node.js",
   "main": "index.js",
   "bin": "bin.js",
